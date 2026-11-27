@@ -1,0 +1,60 @@
+{
+  "mode": "static_serverless_telegram_mini_app",
+  "practice_count": 60,
+  "program_count": 13,
+  "bundle_sha256": "9eab5f49e7e65c0efc608ac43905f6c6e17f8b2b102299147a2f843178d48304",
+  "files": {
+    ".nojekyll": {
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "analytics.js": {
+      "size_bytes": 10379,
+      "sha256": "f5d67d5a3275d057f4500f173f5c9077cfa97faa1fb5af98cc98deb12c5ec88f"
+    },
+    "app.js": {
+      "size_bytes": 92182,
+      "sha256": "127a09859a1af1a9ef50acff3b318c34cff4294d8d0ae3804bb88ddaffe1f5e4"
+    },
+    "audio-cue.js": {
+      "size_bytes": 9088,
+      "sha256": "771ec3bfc11dfd9efae37882bacf06ba2c63572369622e6f148017b6016ea9ab"
+    },
+    "catalog.json": {
+      "size_bytes": 269039,
+      "sha256": "92663267a3b5de81cecfb4c5433f77113b32363de72fdc8d3b7337cb934b8cca"
+    },
+    "design-tokens.json": {
+      "size_bytes": 1620,
+      "sha256": "968f79de5503b0e38f8c43860280c363674ecc3db64205018df40b8f70f9cd36"
+    },
+    "icon.svg": {
+      "size_bytes": 1281,
+      "sha256": "4423d4ac35ab93d09dac754483c4b0a2da31eb85c6d5f465e9caf6bcea0bb274"
+    },
+    "index.html": {
+      "size_bytes": 27852,
+      "sha256": "d2ab3ca94daad3531d9cf5134fd0fff8676aea63c2891bd6614d5842061cb45e"
+    },
+    "manifest.webmanifest": {
+      "size_bytes": 634,
+      "sha256": "4769499e4f3f1325e2590366fa85729196d28cef3f9bd10a57630b24dfc5f614"
+    },
+    "storage.js": {
+      "size_bytes": 33926,
+      "sha256": "26c165236a9bc60b52a3a0e846cf906aa8566594d007f574c6aa52286df40468"
+    },
+    "style.css": {
+      "size_bytes": 48000,
+      "sha256": "45b0f4867e60552acade02ec010f85aedd3e66f919d8ecde12ece9db572f7abd"
+    },
+    "tokens.css": {
+      "size_bytes": 7519,
+      "sha256": "b2e1f395ad766c4a1789ad9dca8cc01afb6cd1ff4ef219a884aba2798cea8c04"
+    },
+    "visualizer.js": {
+      "size_bytes": 73795,
+      "sha256": "3c1f375c94a2a5ca778bac204d25973154d2fb3361ea32375b11f8f2af0cea2c"
+    }
+  }
+}

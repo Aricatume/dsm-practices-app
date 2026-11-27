@@ -1,0 +1,49 @@
+{
+  "schema": "cognition-os.dual-substrate.tokens.v2",
+  "pilot_id": "PILOT-01",
+  "figma_file_key": "x8mvR37zbt5ty8P5gO6h0F",
+  "collections": [
+    "DSM Light Frost",
+    "DSM Sunset Pastel",
+    "DSM Night Velvet",
+    "DSM Eyes-Closed Blackout",
+    "DSM Geometry",
+    "DSM Motion"
+  ],
+  "circadian_schedule": {
+    "morning": "05:00-11:59 (route: утро, cool frost white)",
+    "day": "12:00-16:59 (route: день, cool frost white)",
+    "sunset": "17:00-20:59 (route: вечер, warm pastel pearl)",
+    "night": "21:00-04:59 (route: перед-сном, soft velvet midnight)"
+  },
+  "tokens": {
+    "--dsm-bg-air": "#edf2fb",
+    "--dsm-glass-card": "rgba(255, 255, 255, 0.74)",
+    "--dsm-glass-strong": "rgba(255, 255, 255, 0.90)",
+    "--dsm-glass-soft": "rgba(255, 255, 255, 0.56)",
+    "--dsm-glass-edge": "rgba(255, 255, 255, 0.90)",
+    "--dsm-ink": "#162038",
+    "--dsm-ink-soft": "#42526e",
+    "--dsm-ink-muted": "#6b7c99",
+    "--dsm-cyan": "#24d2ff",
+    "--dsm-cobalt": "#3778ff",
+    "--dsm-indigo": "#4f46e5",
+    "--dsm-emerald": "#0ea57a",
+    "--dsm-amber": "#d97706",
+    "--dsm-coral": "#e11d48",
+    "--dsm-sunset-bg": "#fbf2ea",
+    "--dsm-night-bg": "#101729",
+    "--dsm-blackout-bg": "#050811",
+    "--dsm-blackout-card": "rgba(13, 19, 36, 0.88)",
+    "--dsm-blackout-ink": "#cbd8f0",
+    "--dsm-radius-shell": "28px",
+    "--dsm-radius-card": "22px",
+    "--dsm-radius-inner": "16px",
+    "--dsm-pad-card": "20px",
+    "--dsm-gap-md": "14px",
+    "--dsm-dur-roll": "0.36s",
+    "--dsm-dur-dock": "0.38s",
+    "--dsm-cascade-ms": "26ms",
+    "--dsm-dur-blackout": "0.48s"
+  }
+}

@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="ru" data-dsm-mode="static" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#edf2fb" />
+  <meta name="color-scheme" content="light" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://telegram.org https://mc.yandex.ru https://mc.yandex.com https://yastatic.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://mc.yandex.ru https://mc.yandex.com; media-src 'self' data: blob:; connect-src 'self' https://mc.yandex.ru https://mc.yandex.com wss://mc.yandex.ru; object-src 'none'; base-uri 'self'; form-action 'none';" />
+  <meta name="referrer" content="origin" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <title>ДСМ-Практики · Чистый воздух</title>
+  <link rel="manifest" href="./manifest.webmanifest?v=402" />
+  <link rel="icon" type="image/svg+xml" href="./icon.svg?v=402" />
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <link rel="stylesheet" href="./tokens.css?v=402" />
+  <link rel="stylesheet" href="./style.css?v=402" />
+  <script src="./analytics.js?v=402"></script>
+</head>
+<body>
+  <!-- GPU-composited Liquid Ribbon & Pearl Orbs behind frosted glass -->
+  <div id="ambient-scene" class="ambient-scene" aria-hidden="true">
+    <span class="amb-orb amb-cyan"></span>
+    <span class="amb-orb amb-cobalt"></span>
+    <span class="amb-orb amb-pearl"></span>
+    <svg class="amb-ribbon" viewBox="0 0 600 900" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="ribbonFlow" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:var(--dsm-rib-1)" stop-opacity="0.34" />
+          <stop offset="52%" style="stop-color:var(--dsm-rib-2)" stop-opacity="0.28" />
+          <stop offset="100%" style="stop-color:var(--dsm-rib-3)" stop-opacity="0.22" />
+        </linearGradient>
+      </defs>
+      <path d="M 90,-40 C 240,120 40,310 250,470 C 460,630 290,780 470,940" fill="none" stroke="url(#ribbonFlow)" stroke-width="84" stroke-linecap="round" />
+    </svg>
+  </div>
+
+  <!-- Soft pearlescent veil during initial data load (dissolves smoothly, zero jank) -->
+  <div id="liquid-boot-veil" class="liquid-boot-veil" aria-hidden="true">
+    <div class="boot-droplet">
+      <span class="boot-ring"></span>
+      <span class="boot-core">🫧</span>
+    </div>
+  </div>
+
+  <main class="shell">
+    <header class="topbar">
+      <button id="brand-home" class="brand-btn" type="button" title="На главную">🫧 ДСМ-Практики</button>
+      <div class="topbar-right">
+        <button id="atmosphere-pill" class="rhythm-dot-pill atmo-pill-btn" type="button" title="Атмосфера по времени устройства (нажми, чтобы переключить Авто / Утро / Вечер / Ночь)">
+          <span id="atmosphere-pill-text">🌅 Авто</span>
+        </button>
+        <button id="hud-pill" class="rhythm-dot-pill hud-pill-btn" type="button" title="Открыть Мой ритм">
+          <span class="live-dot"></span>
+          <span id="hud-pill-text">0 · Ритм</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- TAB 1: NOW — 1-SCREEN CALM ENTRY + COLLAPSED PROGRAMS DRAWER -->
+    <section id="view-programs" class="card">
+      <div id="resume-banner" class="banner resume hidden"></div>
+      <div id="due-banner" class="banner due-action hidden"></div>
+
+      <!-- 1-Screen Smart Entry Hero -->
+      <div id="now-hero-card" class="now-hero-card">
+        <div class="now-hero-top">
+          <span class="now-kicker">Как ты сейчас?</span>
+          <span id="now-unlock-chip" class="unlock-chip">Ступень 1 / 4</span>
+        </div>
+        <div class="mood-pills" role="group" aria-label="Уровень шума сейчас">
+          <button class="mood-pill" data-mood="2" type="button">
+            <span class="mp-ico">😌</span>
+            <span class="mp-lbl">Спокойно</span>
+            <span class="mp-num">2 · ясно</span>
+          </button>
+          <button class="mood-pill active" data-mood="5" type="button">
+            <span class="mp-ico">🫧</span>
+            <span class="mp-lbl">Фон</span>
+            <span class="mp-num">5 · сейчас</span>
+          </button>
+          <button class="mood-pill" data-mood="8" type="button">
+            <span class="mp-ico">⚡</span>
+            <span class="mp-lbl">Перегруз</span>
+            <span class="mp-num">8 · сброс</span>
+          </button>
+        </div>
+
+        <div id="now-rec-box" class="now-rec-box">
+          <div id="now-rec-tag" class="now-rec-tag">Точный шаг на сейчас</div>
+          <h1 id="now-rec-title" class="now-rec-title">⚡ Физиологический вздох</h1>
+          <p id="now-rec-sub" class="now-rec-sub">1 мин · двойной вдох и длинный выдох — мягко сбрасывает острый шум.</p>
+          <button id="btn-now-start" class="btn primary full now-cta-btn" type="button">▶ Начать сейчас · 1 мин</button>
+        </div>
+
+        <div class="now-unlock-bar">
+          <span id="now-unlock-hint" class="now-unlock-hint">Тропа спокойствия: 1 короткий шаг откроет ежедневные маршруты</span>
+          <button id="btn-now-unlock-toggle" class="link-unlock-inline" type="button">🔓 Открыть всё сразу</button>
+        </div>
+      </div>
+
+      <!-- Collapsed Progressive Drawer for all 13 Programs -->
+      <details id="programs-drawer" class="drawer-card">
+        <summary class="drawer-summary">
+          <span>🧭 Все 13 маршрутов</span>
+          <span id="programs-drawer-badge" class="drawer-badge">по шагам</span>
+        </summary>
+        <div class="drawer-body">
+          <div class="head-row" style="margin-top:4px">
+            <span class="field-label" style="margin:0">Маршруты</span>
+            <div class="subtabs">
+              <button class="subtab active" data-pgroup="daily" type="button">Каждый день</button>
+              <button class="subtab" data-pgroup="deep" type="button">Глубокие</button>
+            </div>
+          </div>
+          <p class="muted" style="margin-top:6px">Выбери готовый маршрут — приложение мягко проведёт через каждый шаг.</p>
+          <div id="program-grid" class="program-grid"></div>
+        </div>
+      </details>
+    </section>
+
+    <!-- PROGRAM DETAIL / ROUTE PREVIEW -->
+    <section id="view-program-detail" class="card hidden">
+      <div class="nav-row">
+        <button id="btn-prog-back" class="link-back" type="button">← Назад</button>
+        <button id="btn-prog-home" class="link-home" type="button">⌂ На главную</button>
+      </div>
+      <h1 id="pd-title"></h1>
+      <p id="pd-meta" class="muted"></p>
+      <p id="pd-goal" class="goal-box"></p>
+
+      <div class="slider-block">
+        <div class="slider-head">
+          <span>Тревога и шум сейчас</span>
+          <span class="state-val-wrap">
+            <strong id="pd-before-val">6</strong>
+            <span id="pd-before-badge" class="state-badge state-mid">Заметное напряжение</span>
+          </span>
+        </div>
+        <input id="pd-noise-before" type="range" min="0" max="10" value="6" />
+        <div class="slider-scale"><span>0 · тишина</span><span>5 · фон</span><span>10 · перегруз</span></div>
+      </div>
+
+      <button id="btn-prog-start" class="btn primary full">▶ Запустить программу целиком</button>
+
+      <details id="pd-route-drawer" class="drawer-card compact-drawer">
+        <summary class="drawer-summary">
+          <span>📋 Маршрут и схема программы</span>
+          <span id="pd-steps-count" class="drawer-badge"></span>
+        </summary>
+        <div class="drawer-body">
+          <ol id="pd-steps" class="route-list"></ol>
+          <div id="pd-scheme-wrap" class="scheme-box hidden" style="margin-top:10px;margin-bottom:0">
+            <div class="field-label" style="margin-top:0">Схема и паузы</div>
+            <ul id="pd-scheme" class="scheme-list"></ul>
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <!-- PROGRAM STEP TRANSITION SCREEN -->
+    <section id="view-program-transition" class="card hidden">
+      <div class="nav-row">
+        <span id="tr-counter" class="muted" style="margin:0"></span>
+        <button id="btn-tr-home" class="link-home" type="button">⌂ На главную</button>
+      </div>
+      <div class="progress-track" style="margin-top:8px"><div id="tr-bar" class="progress-fill"></div></div>
+      <h2 id="tr-heading">Шаг выполнен ✓</h2>
+      <p id="tr-next-info" class="goal-box"></p>
+      <button id="btn-tr-continue" class="btn primary full">Перейти к следующему шагу →</button>
+      <button id="btn-tr-pause-exit" class="btn ghost full">Сделать паузу (прогресс сохранён)</button>
+    </section>
+
+    <!-- TAB 2: SINGLE PRACTICE CATALOG (60 practices, isolated from personal Track) -->
+    <section id="view-single" class="card hidden">
+      <div class="head-row">
+        <h1>Каталог практик</h1>
+        <button id="btn-single-unlock-toggle" class="link-unlock-inline" type="button">🔓 Открыть все 60</button>
+      </div>
+      <p class="muted">Свободный выбор по каналу тела и внимания — не сбивает твою основную тропу.</p>
+
+      <div class="field-label" style="margin-top:4px">Быстрый сброс</div>
+      <div class="quick-cards">
+        <button class="quick-card featured-quick" data-quick="fiziologicheskij-vzdoh" type="button">
+          <div class="qc-top"><span>⚡ Вздох</span><span class="qc-time">1 мин ›</span></div>
+          <div class="qc-sub">Снять острый пик тревоги</div>
+        </button>
+        <button class="quick-card" data-quick="nablyudenie-dyhaniya" type="button">
+          <div class="qc-top"><span>🫧 Дыхание</span><span class="qc-time">5 мин ›</span></div>
+          <div class="qc-sub">Замедлить поток мыслей</div>
+        </button>
+      </div>
+
+      <div class="field-label">Канал тела и внимания</div>
+      <div class="cat-chips-wrap">
+        <div id="cat-chips" class="cat-chips"></div>
+      </div>
+
+      <div class="list-head-row">
+        <span id="practice-list-title" class="field-label" style="margin:0">Практики</span>
+        <span id="practice-list-count" class="muted" style="margin:0;font-size:12px"></span>
+      </div>
+      <div id="practice-list" class="program-grid"></div>
+    </section>
+
+    <!-- SINGLE PRACTICE DETAIL / PRE-START SCREEN -->
+    <section id="view-practice-detail" class="card hidden">
+      <div class="nav-row">
+        <button id="btn-pr-back" class="link-back" type="button">← Все практики</button>
+        <button id="btn-pr-home" class="link-home" type="button">⌂ На главную</button>
+      </div>
+      <h1 id="pr-title"></h1>
+      <p id="pr-meta" class="muted"></p>
+      <p id="pr-summary" class="goal-box"></p>
+      <div id="pr-guidance" class="guidance-card hidden"></div>
+
+      <div class="slider-block">
+        <div class="slider-head">
+          <span>Тревога и шум сейчас</span>
+          <span class="state-val-wrap">
+            <strong id="before-val">6</strong>
+            <span id="before-badge" class="state-badge state-mid">Заметное напряжение</span>
+          </span>
+        </div>
+        <input id="noise-before" type="range" min="0" max="10" value="6" />
+        <div class="slider-scale"><span>0 · тишина</span><span>5 · фон</span><span>10 · перегруз</span></div>
+      </div>
+
+      <button id="btn-start-single" class="btn primary full">▶ Начать практику</button>
+
+      <details id="pr-details-drawer" class="drawer-card compact-drawer">
+        <summary class="drawer-summary">
+          <span>📖 Подготовка и этапы практики</span>
+          <span id="pr-phases-count" class="drawer-badge"></span>
+        </summary>
+        <div class="drawer-body">
+          <div id="pr-prep-wrap" class="scheme-box hidden" style="margin-top:0;margin-bottom:10px">
+            <div class="field-label" style="margin-top:0">Подготовка</div>
+            <ul id="pr-prep" class="scheme-list"></ul>
+          </div>
+          <ol id="pr-phases" class="route-list"></ol>
+        </div>
+      </details>
+    </section>
+
+    <!-- TAB 3: MY RHYTHM — WAVE IMPACT HUD + SETTINGS -->
+    <section id="view-rhythm" class="card hidden">
+      <h1>Мой ритм</h1>
+      <p class="muted">Как практики влияют на твой уровень тревоги и шума. Данные хранятся только у тебя.</p>
+
+      <!-- Hero Impact HUD -->
+      <div id="rhythm-impact-hero" class="hud-hero"></div>
+
+      <!-- 4 KPI tiles -->
+      <div id="rhythm-stats" class="stats-grid-4"></div>
+
+      <!-- Smooth Spline Wave Chart (Before -> After) -->
+      <div id="rhythm-chart-wrap" class="hud-panel hidden">
+        <div class="hud-panel-head">
+          <span class="hud-panel-title">Волна состояния «До → После»</span>
+          <span class="hud-legend">
+            <span class="leg-item"><i class="leg-dot before"></i>до</span>
+            <span class="leg-item"><i class="leg-dot after"></i>после</span>
+          </span>
+        </div>
+        <div id="rhythm-trend-chart" class="hud-chart-host"></div>
+      </div>
+
+      <!-- Most effective practices -->
+      <div id="rhythm-top-wrap" class="hidden">
+        <div class="field-label">Что лучше всего снижает шум у тебя</div>
+        <div id="rhythm-top-effective" class="list-stack"></div>
+      </div>
+
+      <!-- Ebbinghaus Curve HUD -->
+      <div class="field-label">Кривая Эббингауза (закрепление)</div>
+      <div id="rhythm-curve" class="list-stack"></div>
+
+      <!-- Unified State History -->
+      <div class="field-label">История состояний</div>
+      <div id="rhythm-history" class="list-stack"></div>
+
+      <!-- Settings & Progression Control -->
+      <div class="field-label">Настройки и карта практик</div>
+      <div class="settings-card">
+        <div class="setting-row">
+          <div class="setting-copy">
+            <div class="setting-title">🔊 Мягкие звуковые сигналы</div>
+            <div class="setting-sub">Включает обход беззвучного режима на iPhone</div>
+          </div>
+          <button id="pref-sound-btn" class="toggle-pill on" type="button" aria-pressed="true">Вкл</button>
+        </div>
+        <div class="setting-row">
+          <div class="setting-copy">
+            <div class="setting-title">🌗 Атмосфера по времени дня</div>
+            <div id="pref-atmo-sub" class="setting-sub">Авто по часам: 🌅 утро · 🌇 тёплый вечер · 🌌 мягкая ночь</div>
+          </div>
+          <button id="pref-atmo-btn" class="toggle-pill on" type="button">Авто</button>
+        </div>
+        <div class="setting-row">
+          <div class="setting-copy">
+            <div class="setting-title">🧭 Режим открытия практик</div>
+            <div id="pref-sandbox-sub" class="setting-sub">По шагам — новые слои открываются мягко</div>
+          </div>
+          <button id="pref-sandbox-btn" class="toggle-pill" type="button" aria-pressed="false">По шагам</button>
+        </div>
+        <div class="setting-actions">
+          <button id="btn-export-json" class="btn ghost small" type="button">⬇ Экспорт JSON</button>
+          <button id="btn-reset-all" class="btn ghost small danger-ghost" type="button">↺ Сбросить прогресс</button>
+        </div>
+      </div>
+
+      <div id="rhythm-storage-note" class="muted" style="font-size:11.5px;margin-top:10px;margin-bottom:12px;opacity:0.8"></div>
+
+      <div class="support-card">
+        <div class="support-head">💛 Поддержать развитие · без рекламы</div>
+        <p class="support-text">Все 60 практик и 13 маршрутов открыты свободно. Если стало спокойнее — можно поддержать проект в Tribute.</p>
+        <button id="btn-rhythm-tribute" class="btn support-btn full" type="button">Открыть благодарность в Tribute →</button>
+      </div>
+    </section>
+
+    <!-- SHARED ACTIVE TIMER (with LEV-04 Eyes-Closed Audio-First + Blackout toggle!) -->
+    <section id="view-timer" class="card hidden">
+      <div class="nav-row">
+        <button id="btn-timer-home" class="link-back" type="button">← На главную</button>
+        <div class="timer-top-right">
+          <span id="timer-phase-counter" class="muted" style="margin:0;font-size:12px;white-space:nowrap"></span>
+          <button id="btn-eyes-closed" class="eyes-closed-pill" type="button" aria-pressed="false" title="Режим с закрытыми глазами (гасит экран и ведёт звуком)">🌙 Без экрана</button>
+          <button id="btn-timer-sound" class="sound-toggle-btn" type="button" title="Звук сигналов" aria-label="Переключить звук">🔊</button>
+        </div>
+      </div>
+
+      <div id="timer-prog-header" class="prog-banner hidden">
+        <div class="progress-track"><div id="timer-prog-bar" class="progress-fill"></div></div>
+        <div id="timer-prog-label" class="prog-banner-text"></div>
+      </div>
+
+      <div class="phase-meta">
+        <span id="timer-practice-title" class="timer-title-strong"></span>
+        <span id="timer-status-pill" class="phase-status-pill ready">Прочитай шаг</span>
+      </div>
+
+      <div class="timer-compact-row">
+        <h2 id="timer-phase-title" class="phase-heading">Вход</h2>
+        <div class="clock-inline" id="timer-clock">00:30</div>
+      </div>
+
+      <!-- SUB-STATE A: CALM INSTRUCTION BRIEFING BEFORE TIMER STARTS -->
+      <div id="phase-ready-pane">
+        <p class="ready-hint">Таймер на паузе — спокойно прочитай шаг. Для расслабления без экрана можно нажать «🌙 Закрыть глаза».</p>
+        <div id="ready-guidance" class="guidance-card compact hidden"></div>
+        <div id="ready-steps-list" class="step-cards"></div>
+
+        <button id="btn-phase-go" class="btn primary full btn-go-lg" type="button">Готов · Поехали →</button>
+        <div class="row-actions">
+          <button id="btn-ready-skip" class="btn ghost" type="button">След. фаза →</button>
+          <button id="btn-ready-stop" class="btn ghost" type="button">Завершить сейчас</button>
+        </div>
+      </div>
+
+      <!-- SUB-STATE B: ACTIVE TIMER + NEUMORPHIC RING VISUALIZER + EYES-CLOSED AUDIO -->
+      <div id="phase-running-pane" class="hidden">
+        <div id="blackout-whisper" class="blackout-whisper hidden">
+          <span>🌙 Экран приглушён · мягкий звук ведёт вдох и выдох с закрытыми глазами</span>
+        </div>
+
+        <div id="visualizer-host" class="viz-host"></div>
+
+        <div id="focus-return-bar" class="focus-return-bar hidden">
+          <button id="btn-focus-return" class="btn-focus-return" type="button">
+            <span>✦ Поймал уход · Вернул фокус</span>
+            <span id="focus-return-count" class="focus-return-count">0</span>
+          </button>
+        </div>
+
+        <div class="row-actions" style="margin-top:8px">
+          <button id="btn-pause" class="btn" type="button">⏸ Пауза</button>
+          <button id="btn-next-phase" class="btn primary" type="button">Дальше →</button>
+        </div>
+
+        <div class="sound-help-row">
+          <button id="btn-sound-help" class="sound-help-btn" type="button">🔇 Нет звука?</button>
+          <span id="sound-help-tip" class="sound-help-tip hidden"></span>
+        </div>
+
+        <details id="running-guide-details" class="guide-drawer">
+          <summary class="guide-summary">📖 Памятка шага (показать инструкцию)</summary>
+          <div id="running-steps-list" class="step-cards compact"></div>
+        </details>
+
+        <div class="row-actions" id="timer-extra-actions">
+          <button id="btn-skip-step" class="btn ghost hidden" type="button">Пропустить шаг</button>
+          <button id="btn-stop-early" class="btn ghost full-span" type="button">Завершить и отметить состояние</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SHARED FINISH SCREEN -->
+    <section id="view-finish" class="card hidden">
+      <div class="nav-row">
+        <span class="prog-outcome-tag" style="margin:0">Оценка эффекта</span>
+        <button id="btn-finish-cancel" class="link-home" type="button">⌂ На главную</button>
+      </div>
+      <h2 id="finish-title">Как состояние после?</h2>
+      <p class="muted">Отметь уровень тревоги и шума прямо сейчас — это обновит твою волну состояния.</p>
+
+      <div id="finish-delta-preview" class="delta-preview-box"></div>
+
+      <div id="finish-obs-wrap" class="scheme-box hidden">
+        <div class="field-label" style="margin-top:0">Вопросы наблюдения программы (для себя)</div>
+        <ul id="finish-obs" class="scheme-list"></ul>
+      </div>
+
+      <div class="slider-block">
+        <div class="slider-head">
+          <span>Тревога и шум после</span>
+          <span class="state-val-wrap">
+            <strong id="after-val">4</strong>
+            <span id="after-badge" class="state-badge state-low">Спокойнее</span>
+          </span>
+        </div>
+        <input id="noise-after" type="range" min="0" max="10" value="4" />
+        <div class="slider-scale"><span>0 · тишина</span><span>5 · фон</span><span>10 · перегруз</span></div>
+      </div>
+
+      <div class="field-label">Было ли сопротивление? (1 клик)</div>
+      <div class="chips" id="friction-chips">
+        <button class="chip active" data-tag="none">Спокойно</button>
+        <button class="chip" data-tag="tired">Устал</button>
+        <button class="chip" data-tag="rushed">Спешил</button>
+        <button class="chip" data-tag="distracted">Отвлекался</button>
+        <button class="chip" data-tag="stopped_early">Прервал</button>
+      </div>
+
+      <button id="btn-save" class="btn primary full">Сохранить результат</button>
+    </section>
+
+    <!-- SHARED DONE RECEIPT -->
+    <section id="view-done" class="card hidden">
+      <div class="nav-row">
+        <span class="prog-outcome-tag" style="margin:0">Готово</span>
+        <button id="btn-done-home-top" class="link-home" type="button">⌂ На главную</button>
+      </div>
+      <h2>Состояние зафиксировано</h2>
+      <div id="done-summary" class="summary"></div>
+
+      <button id="btn-done-continue" class="btn primary full hidden" type="button">🌿 Продлить спокойствие (+5 мин)</button>
+
+      <div class="support-card">
+        <div class="support-head">💛 Поддержать проект</div>
+        <p class="support-text">Приложение открыто бесплатно и без рекламы. Если практика помогла выдохнуть — можно оставить любую благодарность.</p>
+        <button id="btn-support-tribute" class="btn support-btn full" type="button">Поблагодарить в Tribute →</button>
+      </div>
+
+      <button id="btn-done-rhythm" class="btn full">📊 Смотреть мой ритм</button>
+      <button id="btn-back-home" class="btn ghost full">⌂ На главную</button>
+    </section>
+
+    <footer id="app-support-footer" class="support-footer">
+      <button id="btn-footer-tribute" class="support-footer-btn" type="button">
+        <span class="sf-left">💛 Поддержать проект</span>
+        <span class="sf-right">Tribute ›</span>
+      </button>
+    </footer>
+
+    <!-- Floating Liquid Glass Bottom Dock (matches reference screens 2 & 3) -->
+    <nav id="main-tabs" class="tabs glass-dock" data-dock-idx="0" aria-label="Разделы">
+      <span id="dock-glider" class="dock-glider" aria-hidden="true"></span>
+      <button class="tab active" data-tab="programs" type="button">
+        <span class="dock-ico">⌂</span>
+        <span class="dock-lbl">Сейчас</span>
+      </button>
+      <button class="tab" data-tab="single" type="button">
+        <span class="dock-ico dock-center-gem">✦</span>
+        <span class="dock-lbl">Практики</span>
+      </button>
+      <button class="tab" data-tab="rhythm" type="button">
+        <span class="dock-ico">≈</span>
+        <span class="dock-lbl">Мой ритм</span>
+      </button>
+    </nav>
+  </main>
+
+  <!-- DUAL-MODE PROGRESSIVE UNLOCK / MILESTONE MODAL -->
+  <div id="unlock-modal" class="unlock-modal hidden" role="dialog" aria-modal="true" aria-labelledby="unlock-modal-title">
+    <div id="unlock-modal-backdrop" class="unlock-backdrop"></div>
+    <div class="unlock-card">
+      <div id="unlock-modal-kicker" class="unlock-kicker">Спокойный вход в глубину</div>
+      <h2 id="unlock-modal-title" class="unlock-title">Откроется через 1 шаг</h2>
+      <p id="unlock-modal-body" class="unlock-body"></p>
+
+      <div id="unlock-tribute-box" class="unlock-tribute-box hidden">
+        <div class="support-head">💛 Если стало чуть тише</div>
+        <p class="support-text">ДСМ-Практики работают бесплатно и без рекламы. Можно поддержать развитие проекта любой суммой в Tribute.</p>
+        <button id="btn-unlock-tribute" class="btn support-btn full" type="button">Поблагодарить в Tribute →</button>
+      </div>
+
+      <div class="unlock-actions">
+        <button id="btn-unlock-primary" class="btn primary full" type="button">▶ Пройти короткий шаг (1 мин)</button>
+        <button id="btn-unlock-all" class="btn full" type="button">🔓 Открыть все 60 практик сразу</button>
+        <button id="btn-unlock-close" class="btn ghost full" type="button">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <noscript><div><img src="https://mc.yandex.ru/watch/114508186" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <script src="./audio-cue.js?v=402"></script>
+  <script src="./storage.js?v=402"></script>
+  <script src="./visualizer.js?v=402"></script>
+  <script src="./app.js?v=402"></script>
+</body>
+</html>

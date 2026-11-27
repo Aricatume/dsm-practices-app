@@ -1,0 +1,20 @@
+{
+  "name": "ДСМ-Практики · Чистый воздух",
+  "short_name": "ДСМ-Практики",
+  "description": "60 практик внимания, дыхания и 13 маршрутов для снижения внутреннего шума. Работает без сервера.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#edf2fb",
+  "theme_color": "#edf2fb",
+  "lang": "ru",
+  "icons": [
+    {
+      "src": "./icon.svg?v=402",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

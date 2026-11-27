@@ -1,0 +1,177 @@
+/* Auto-synced from design-tokens.json (Figma Substrate x8mvR37zbt5ty8P5gO6h0F)
+ * Circadian Liquid Glass:
+ *   - morning (05:00–16:59): Cool Morning Frost White (#edf2fb)
+ *   - sunset  (17:00–20:59): Warm Pastel Sunset Pearl (#fbf2ea)
+ *   - night   (21:00–04:59): Soft Velvet Midnight Glass (#101729)
+ *   - blackout (LEV-04):     Deep Eyes-Closed Audio-First (#050811)
+ */
+:root,
+html[data-atmosphere="morning"] {
+  color-scheme: light;
+  --dsm-bg-air: #edf2fb;
+  --dsm-sunset-bg: #fbf2ea;
+  --dsm-night-bg: #101729;
+  --dsm-glass-card: rgba(255, 255, 255, 0.74);
+  --dsm-glass-strong: rgba(255, 255, 255, 0.90);
+  --dsm-glass-soft: rgba(255, 255, 255, 0.56);
+  --dsm-glass-edge: rgba(255, 255, 255, 0.90);
+  --dsm-modal-bg: rgba(255, 255, 255, 0.94);
+  --dsm-line-subtle: rgba(55, 120, 255, 0.12);
+  --dsm-ink: #162038;
+  --dsm-ink-soft: #42526e;
+  --dsm-ink-muted: #6b7c99;
+  --dsm-cyan: #24d2ff;
+  --dsm-cobalt: #3778ff;
+  --dsm-indigo: #4f46e5;
+  --dsm-emerald: #0ea57a;
+  --dsm-amber: #d97706;
+  --dsm-coral: #e11d48;
+  --dsm-blackout-bg: #050811;
+  --dsm-blackout-card: rgba(13, 19, 36, 0.88);
+  --dsm-blackout-ink: #cbd8f0;
+  --dsm-grad-primary: linear-gradient(135deg, #24d2ff 0%, #3778ff 54%, #4f46e5 100%);
+  --dsm-grad-dock: linear-gradient(135deg, rgba(36, 210, 255, 0.94) 0%, rgba(55, 120, 255, 0.95) 55%, rgba(79, 70, 229, 0.95) 100%);
+  --dsm-shadow-card: 0 20px 46px rgba(34, 68, 152, 0.09), inset 0 1px 0 rgba(255, 255, 255, 0.94);
+  --dsm-shadow-tile: 0 10px 26px rgba(34, 68, 152, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  --dsm-shadow-cta: 0 12px 28px rgba(55, 120, 255, 0.30);
+  --dsm-shadow-dock: 0 18px 38px rgba(42, 92, 218, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  --dsm-amb-orb-1: rgba(36, 210, 255, 0.42);
+  --dsm-amb-orb-2: rgba(55, 120, 255, 0.34);
+  --dsm-amb-orb-3: rgba(167, 139, 250, 0.26);
+  --dsm-rib-1: #24d2ff;
+  --dsm-rib-2: #3778ff;
+  --dsm-rib-3: #6c63ff;
+  --dsm-rib-opacity: 1;
+  --dsm-boot-bg: radial-gradient(circle at 50% 42%, rgba(255, 255, 255, 0.94), rgba(237, 242, 251, 0.97));
+  --dsm-support-bg: linear-gradient(135deg, rgba(255, 251, 235, 0.92), rgba(254, 243, 199, 0.74));
+  --dsm-support-border: rgba(245, 158, 11, 0.30);
+  --dsm-support-head: #92400e;
+  --dsm-support-text: #78350f;
+  --dsm-support-accent: #d97706;
+  --dsm-radius-shell: 28px;
+  --dsm-radius-card: 22px;
+  --dsm-radius-inner: 16px;
+  --dsm-pad-card: 20px;
+  --dsm-gap-md: 14px;
+  --dsm-dur-roll: 0.36s;
+  --dsm-dur-dock: 0.38s;
+  --dsm-cascade-ms: 26ms;
+  --dsm-dur-blackout: 0.48s;
+  --dsm-spring: cubic-bezier(0.22, 1, 0.36, 1);
+  --dsm-spring-overshoot: cubic-bezier(0.22, 1.15, 0.36, 1);
+  --viz-track: rgba(55, 120, 255, 0.16);
+  --viz-surface: rgba(255, 255, 255, 0.66);
+  --viz-ink: #162038;
+  --viz-muted: #6b7c99;
+}
+
+/* 🌇 Sunset (17:00–20:59): Warm Pastel Peach-Rose-Lavender Pearl Glass */
+html[data-atmosphere="sunset"] {
+  color-scheme: light;
+  --dsm-bg-air: var(--dsm-sunset-bg);
+  --dsm-glass-card: rgba(255, 250, 246, 0.76);
+  --dsm-glass-strong: rgba(255, 252, 249, 0.91);
+  --dsm-glass-soft: rgba(255, 245, 237, 0.62);
+  --dsm-glass-edge: rgba(255, 255, 255, 0.92);
+  --dsm-modal-bg: rgba(255, 251, 248, 0.95);
+  --dsm-line-subtle: rgba(219, 104, 133, 0.15);
+  --dsm-ink: #2c1d24;
+  --dsm-ink-soft: #5e4550;
+  --dsm-ink-muted: #8b6e7b;
+  --dsm-cyan: #fb923c;
+  --dsm-cobalt: #d9487d;
+  --dsm-indigo: #8b5cf6;
+  --dsm-emerald: #0d9488;
+  --dsm-amber: #d97706;
+  --dsm-coral: #e11d48;
+  --dsm-grad-primary: linear-gradient(135deg, #fb923c 0%, #ec4899 54%, #8b5cf6 100%);
+  --dsm-grad-dock: linear-gradient(135deg, rgba(251, 146, 60, 0.93) 0%, rgba(236, 72, 153, 0.93) 54%, rgba(139, 92, 246, 0.94) 100%);
+  --dsm-shadow-card: 0 20px 46px rgba(156, 68, 92, 0.09), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  --dsm-shadow-tile: 0 10px 26px rgba(156, 68, 92, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  --dsm-shadow-cta: 0 12px 28px rgba(236, 72, 153, 0.27);
+  --dsm-shadow-dock: 0 18px 38px rgba(190, 64, 122, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.48);
+  --dsm-amb-orb-1: rgba(251, 146, 60, 0.36);
+  --dsm-amb-orb-2: rgba(244, 114, 182, 0.30);
+  --dsm-amb-orb-3: rgba(167, 139, 250, 0.26);
+  --dsm-rib-1: #fb923c;
+  --dsm-rib-2: #ec4899;
+  --dsm-rib-3: #8b5cf6;
+  --dsm-rib-opacity: 0.92;
+  --dsm-boot-bg: radial-gradient(circle at 50% 42%, rgba(255, 252, 249, 0.95), rgba(251, 242, 234, 0.98));
+  --viz-track: rgba(217, 72, 125, 0.16);
+  --viz-surface: rgba(255, 250, 246, 0.72);
+  --viz-ink: #2c1d24;
+  --viz-muted: #8b6e7b;
+}
+
+/* 🌌 Night (21:00–04:59): Soft Velvet Midnight Glass with Pastel Periwinkle & Lavender */
+html[data-atmosphere="night"] {
+  color-scheme: dark;
+  --dsm-bg-air: var(--dsm-night-bg);
+  --dsm-glass-card: rgba(22, 32, 56, 0.74);
+  --dsm-glass-strong: rgba(29, 41, 70, 0.86);
+  --dsm-glass-soft: rgba(18, 27, 48, 0.64);
+  --dsm-glass-edge: rgba(196, 218, 255, 0.15);
+  --dsm-modal-bg: rgba(21, 31, 54, 0.95);
+  --dsm-line-subtle: rgba(148, 179, 246, 0.14);
+  --dsm-ink: #e8eefb;
+  --dsm-ink-soft: #b2c2df;
+  --dsm-ink-muted: #8498bd;
+  --dsm-cyan: #5cc8ff;
+  --dsm-cobalt: #7eaaff;
+  --dsm-indigo: #a78bfa;
+  --dsm-emerald: #34d399;
+  --dsm-amber: #fbbf24;
+  --dsm-coral: #fb7185;
+  --dsm-grad-primary: linear-gradient(135deg, #38bdf8 0%, #6366f1 54%, #8b5cf6 100%);
+  --dsm-grad-dock: linear-gradient(135deg, rgba(28, 54, 98, 0.92) 0%, rgba(52, 62, 132, 0.93) 54%, rgba(74, 56, 134, 0.93) 100%);
+  --dsm-shadow-card: 0 22px 52px rgba(4, 8, 20, 0.50), inset 0 1px 0 rgba(214, 230, 255, 0.11);
+  --dsm-shadow-tile: 0 10px 26px rgba(4, 8, 20, 0.36), inset 0 1px 0 rgba(214, 230, 255, 0.09);
+  --dsm-shadow-cta: 0 12px 28px rgba(99, 102, 241, 0.28);
+  --dsm-shadow-dock: 0 18px 40px rgba(4, 8, 22, 0.56), inset 0 1px 0 rgba(214, 230, 255, 0.18);
+  --dsm-amb-orb-1: rgba(56, 189, 248, 0.19);
+  --dsm-amb-orb-2: rgba(129, 140, 248, 0.19);
+  --dsm-amb-orb-3: rgba(244, 114, 182, 0.12);
+  --dsm-rib-1: #38bdf8;
+  --dsm-rib-2: #6366f1;
+  --dsm-rib-3: #a78bfa;
+  --dsm-rib-opacity: 0.42;
+  --dsm-boot-bg: radial-gradient(circle at 50% 42%, rgba(24, 35, 62, 0.96), rgba(16, 23, 41, 0.98));
+  --dsm-support-bg: linear-gradient(135deg, rgba(44, 35, 24, 0.82), rgba(36, 28, 20, 0.76));
+  --dsm-support-border: rgba(251, 191, 36, 0.28);
+  --dsm-support-head: #fde68a;
+  --dsm-support-text: #e7d5b5;
+  --dsm-support-accent: #fbbf24;
+  --viz-track: rgba(148, 179, 246, 0.18);
+  --viz-surface: rgba(15, 23, 43, 0.80);
+  --viz-ink: #e8eefb;
+  --viz-muted: #8da2c6;
+}
+
+/* 🌙 LEV-04: Eyes-Closed Audio-First Blackout Mode (always overrides any circadian theme) */
+html[data-blackout="true"] {
+  color-scheme: dark;
+  --dsm-bg-air: var(--dsm-blackout-bg);
+  --dsm-glass-card: var(--dsm-blackout-card);
+  --dsm-glass-strong: rgba(18, 26, 48, 0.94);
+  --dsm-glass-soft: rgba(15, 23, 42, 0.72);
+  --dsm-glass-edge: rgba(125, 211, 252, 0.14);
+  --dsm-modal-bg: rgba(13, 19, 36, 0.96);
+  --dsm-line-subtle: rgba(125, 211, 252, 0.12);
+  --dsm-ink: var(--dsm-blackout-ink);
+  --dsm-ink-soft: #94a7c6;
+  --dsm-ink-muted: #647899;
+  --dsm-cobalt: #7dd3fc;
+  --dsm-shadow-card: 0 18px 44px rgba(0, 0, 0, 0.65);
+  --dsm-shadow-tile: 0 8px 20px rgba(0, 0, 0, 0.45);
+  --dsm-shadow-cta: 0 8px 24px rgba(36, 210, 255, 0.16);
+  --dsm-support-bg: rgba(30, 27, 20, 0.85);
+  --dsm-support-border: rgba(245, 158, 11, 0.28);
+  --dsm-support-head: #fde68a;
+  --dsm-support-text: #e7d5b5;
+  --dsm-support-accent: #fbbf24;
+  --viz-track: rgba(125, 211, 252, 0.15);
+  --viz-surface: rgba(9, 14, 28, 0.85);
+  --viz-ink: #e2ecf9;
+  --viz-muted: #7b90b2;
+}
